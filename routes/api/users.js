@@ -103,12 +103,15 @@ router.post('/login', (req, res) => {
     .catch(err => console.log(err));
 })
 
+//@route   GET api/login/current
+//@desc    return current user
+//@access  private route
 router.get('/current', 
     passport.authenticate('jwt', {session: false}),
     (req, res) => {
         res.json({msg: 'Success'});
-    
-
+        
+        
 })
 
 
