@@ -2,10 +2,11 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const ProfileSchema = new Schema({
-    username : {
-        type : String,
-        required : true
-    },
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'users'
+      },
+      
     bio : {
         type : String,
         required: false
@@ -14,21 +15,26 @@ const ProfileSchema = new Schema({
         type : String,
         required : false
     },
-    avatar : {
-        type : String,
-        required : false
-    },
+    
     followers : [{
-        type : mongoose.Schema.Types.ObjectId,
-        ref : 'Profile'
+
+        user: {
+            type: Schema.Types.ObjectId,
+            ref: 'users'
+        }
+        
     }],
     following : [{
-        type : mongoose.Schema.Types.ObjectId,
-        ref : 'Profile'
+
+        user: {
+            type: Schema.Types.ObjectId,
+            ref: 'users'
+        }
+    
     }],
     posts : [{
-        type : mongoose.Schema.Types.ObjectId,
-        ref : 'Post'
+        type : Schema.Types.ObjectId,
+        ref : 'posts'
     }]
 });
 
